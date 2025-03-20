@@ -1,34 +1,38 @@
 # About this repo
 
-Simple python project to show a way to take experiental execution time to compare a set of algorithms (three in this case) in fair way.
+Simple Python project that demonstrates different algorithms to determine if a string is a palindrome. The repository compares four different approaches with a comparation betweeen them in execution time.
 
-## Twisted Sort
+## Palindrome Decision
 
 First even then odd sorting algorithms.
 
 ### Problem statement
 ​
-The sample problem is to take a list of integers with at least one element and sort them with the following criteria:
-
-* First it will be the even numbers (those who are divisible by 2 with no reminder), then it will be the odd numbers
-* The even numbers should be sorted in ascending order, and the odd numbers should be sorted in descending order
-* The algorithm will only sort positive numbers
+The problem is to check if a given string is a palindrome, meaning it reads the same forward and backward
 
 ### Examples
 
-* For `3 1 9` the output should be `9 3 1`
+* For the string "racecar", the algorithms should determine it is a palindrome.
 
-* For `1 9 8 2 3 4 5 7 6` the output should be `2 4 6 8 9 7 5 3 1`
+* For the string "hello", the algorithms should determine it is not a palindrome.
 
-* For `8 2 4` the output should be `2 4 8`
+## Algorithms tested
 
-* For `10 90 80 20 30 40 50 70 60` the output should be `10 20 30 40 50 60 70 80 90`
+### Two Pointers
 
-* For `11 91 81 21 31 41 51 71 61` the output should be `91 81 71 61 51 41 31 21 11`
+This algorithm uses two pointers, one at the start of the string and the other at the end. The pointers move towards the center of the string, comparing characters at each step.
 
-* For `11 92 83 24 35 46 57 78 69` the output should be `24 46 78 92 83 69 57 35 11`
+### Reversed String
 
+This algorithm reverses the string and compares it with the original string. If the reversed string is the same as the original, it is a palindrome.
 
+### Recursive
+
+The recursive algorithm checks if a string is a palindrome by dividing the string into its two ends and checking if they are equal. It then recursively calls the function on the remaining substring (excluding the ends) until the string has a length of 1 or 0.
+
+### Stack
+
+This algorithm uses a stack to store half of the characters of the string. It then pops characters from the stack (which will be in reverse order) and compares them with the other half of the original string.
 
 # Python version
 Python 3.11.0
@@ -48,17 +52,17 @@ Python 3.11.0
 Make sure you have "coverage" in your requirements.txt file and run pip install. Then run `coverage run -m unittest discover` and after that run `coverage report` to get the following table:
 
 ```
-Name                            Stmts   Miss  Cover
----------------------------------------------------
-test/__init__.py                    0      0   100%
-test/test_algorithms.py            24      1    96%
-test/test_data_generator.py        29      1    97%
-twistedsort/__init__.py             0      0   100%
-twistedsort/algorithms.py          27      3    89%
-twistedsort/constants.py            2      0   100%
-twistedsort/data_generator.py       9      1    89%
----------------------------------------------------
-TOTAL                              91      6    93%
+Name                           Stmts   Miss  Cover
+--------------------------------------------------
+palindrome\__init__.py             0      0   100%
+palindrome\algorithms.py          37      0   100%
+palindrome\constants.py            2      0   100%
+palindrome\data_generator.py      39      5    87%
+test\__init__.py                   0      0   100%
+test\test_algorithms.py           27      1    96%
+test\test_data_generator.py       47      1    98%
+--------------------------------------------------
+TOTAL                            152      7    95%
 ```
 
 # Code beautifier

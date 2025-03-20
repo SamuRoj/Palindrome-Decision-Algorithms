@@ -16,13 +16,13 @@ def take_execution_time(minimum_size, maximum_size, step, samples_by_size):
 
     return return_table
 
-def take_execution_time_choose(minimum_size, maximum_size, step, samples_by_size, algorithms):
+def take_execution_time_choose(minimum_size, maximum_size, step, samples_by_size, algorithms, isPalindrome):
     return_table = []
 
     for size in range(minimum_size, maximum_size + 1, step):
         print("Processing size: " + str(size))
         table_row = [size]
-        times = take_times_choose(size, samples_by_size, algorithms)
+        times = take_times_choose(size, samples_by_size, algorithms, isPalindrome)
         return_table.append(table_row + times)
 
     return return_table
@@ -43,9 +43,9 @@ def take_times(size, samples_by_size):
         take_time_for_algorithm(samples, algorithms.stack),
     ]
 
-def take_times_choose(size, samples_by_size, algorithmsChoosed):
+def take_times_choose(size, samples_by_size, algorithmsChoosed, isPalindrome):
     results = []
-    samples = data_generator.generate_palindromes(size, samples_by_size, True)
+    samples = data_generator.generate_palindromes(size, samples_by_size, isPalindrome)
 
     if 1 in algorithmsChoosed:
         results.append(take_time_for_algorithm(samples, algorithms.two_pointers))

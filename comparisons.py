@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
-import numpy as np
+import sys
 from palindrome import execution_time_gathering
 
 
 def choose_algortihms():
+    sys.setrecursionlimit(5000)
+
     print("""Please enter the algorithms to test:
     1. Two Pointers
     2. Reversed
@@ -24,11 +26,16 @@ def choose_algortihms():
     print("Enter the amount of samples by size: ")
     samples_by_size = int(input())
 
+    print("Choose true to test with palindromes or false otherwise")
+    isPalindrome = input().lower().strip()
+    isPalindrome = True if isPalindrome == "true" else False
+
     data = execution_time_gathering.take_execution_time_choose(minimum_size, maximum_size, step, 
-                                                               samples_by_size, algorithms)
+                                                               samples_by_size, algorithms, isPalindrome)
     
     j = 1
     sizes = [row[0] for row in data]
+
     for i in algorithms:
         times = [row[j] for row in data]
         plt.scatter(sizes, times, label=algorithmsNames[i-1])

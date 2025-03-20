@@ -31,6 +31,26 @@ class DataGeneratorTest(unittest.TestCase):
             self.assertTrue(number > 0)
         pass
 
+    def test_data_generator_random_string(self):
+        N = 1000
+        random_string = data_generator.generate_random_string(N)
+        self.assertTrue(N == len(random_string))
+
+    def test_data_generator_generate_palindrome(self):
+        N = 1000
+        samples = 15
+        random_palindromes = data_generator.generate_palindromes(N, samples, True)
+        self.assertTrue(len(random_palindromes) == samples)
+        for i in random_palindromes:
+            self.assertTrue(len(i) == N or len(i) == N + 1)
+
+    def test_data_generator_generate_palindrome_and_non_palindrome(self):
+        N = 1000
+        samples = 15
+        random_palindromes = data_generator.generate_palindromes_and_non_palindromes(N, samples)
+        self.assertTrue(len(random_palindromes) == samples)
+        for i in random_palindromes:
+            self.assertTrue(len(i) == N or len(i) == N + 1)
 
 if __name__ == "__main__":
     unittest.main()

@@ -3,15 +3,15 @@ from collections import deque
 def two_pointers(s):
     l, r = 0, len(s) - 1            # O(1)
     isPalindrome = True             # O(1)
-    while l < r and isPalindrome:   # O(n/2) Breaks just in the half of the string
+    while l < r and isPalindrome:   # O(n/2)
         if s[l] != s[r]:            # O(1)
             isPalindrome = False    # O(1)
         l += 1                      # O(1)
-        r -= 1                      # O(1)
+        r -= 1                      # O(1)                    
     return isPalindrome             # O(1)
 
 # Best Base: O(1) The string is not a palindrome
-# Worst Case: O(n/2) The string is a palindrome
+# Worst Case: O(n/2) The string is a palindrome = O(n)
 
 def reverse_string(s):
     reversed = s[::-1]              # O(n)
